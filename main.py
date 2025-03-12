@@ -8,7 +8,9 @@ import math
 def showGraph(xk, fk, label, n, color):
     plt.figure(n)
     plt.grid()
-    plt.plot(xk, fk, c=color)
+    plt.plot(xk, fk, c=color, label=label)
+    plt.scatter(xk, fk, c="Black", label="x(k)")
+    plt.legend()
     plt.xlabel("X")
     plt.ylabel("F")
     plt.title(label)
@@ -47,12 +49,16 @@ showGraph(xk, l_k, "Lagrange", 1, "green")
 showGraph(xk, s_k, "Spline", 2, "blue")
 showGraph(xk, f_k, "Analytic", 3, "red")
 
-#Eps graphs
+#EPS
 lagrangeEps = []
 splineEps = []
 for i in range(len(f_k)):
     lagrangeEps.append(abs(f_k[i] - l_k[i]))
     splineEps.append(abs(f_k[i] - s_k[i]))
+print(f'Lagrange eps = {max(lagrangeEps)}\n'
+      f'Spline eps = {max(splineEps)}')
+
+#Eps graphs
 showGraph(xk, lagrangeEps, "Eps Lagrange", 4, "brown")
 showGraph(xk, splineEps, "Eps Spline", 5, "purple")
 plt.show()
