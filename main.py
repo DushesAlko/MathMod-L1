@@ -37,7 +37,7 @@ xk = []
 l_k = []
 f_k = []
 s_k = []
-for k in range(1, 10):
+for k in range(1, 11):
     x = (k - 0.5)*0.2
     xk.append(x)
     l_k.append(lagrange(x))
